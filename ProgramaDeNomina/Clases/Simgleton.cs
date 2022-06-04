@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProgramaDeNomina;
 
 namespace ProgramaDeNomina.Clases
 {
@@ -19,18 +20,21 @@ namespace ProgramaDeNomina.Clases
         {
             get { return _proceso; }
         }
-        public void Procesar(string mensaje) 
+        public string Procesar(string mensaje) 
         {
-            if(string SePago == )
+            for (int i = 0; i < Pagos.TiposP.PagoARealizar.Length; i++)
             {
-                mensaje = "Procesado correctamente";
+                if (Pagos.TiposP.PagoARealizar[i] == Program.Restante)
+                {
+                    mensaje = "Procesado correctamente";
+                    
+                }
+                else
+                {
+                    mensaje = "No logro ser procesado";
+                }
             }
-            else
-            {
-                mensaje = "No logro ser procesado";
-            }
-            
-            
+            return mensaje;
         }
     }
 }
