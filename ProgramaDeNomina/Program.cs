@@ -10,27 +10,22 @@ namespace ProgramaDeNomina
 
     class Program
     {
-
-        public static string Proces = Simgleton.Proceso.Procesar("");
-        public string TipoDePago = Pagos.TiposP.TipoPago[0];
+        public static string TipoDePago = Pagos.TiposP.TipoPago[0];
+        public static string tpp = string.Empty;
         public static double Restante= 0 ;
+        public static double Total = 0;
 
         static void Main(string[] args)
         {
-            
-
             string Nombre = string.Empty;
             double Salario = 0;
             int Horas = 0;
             double Seguros = 0;
-            
-            int es = 1;
+          
+            Console.WriteLine("Nomina o Servicio:");
+            tpp = Console.ReadLine();
 
-            Console.WriteLine("Nomina(1) o servicio(2):");
-            int tpp = Convert.ToInt32(Console.ReadLine());
-
-            
-            if (es == tpp)
+            if (TipoDePago == tpp)
             {
                 Console.WriteLine("Empleado:");
                 Nombre = Console.ReadLine();
@@ -43,35 +38,29 @@ namespace ProgramaDeNomina
 
                 Restante = Salario * Horas - Seguros;
 
-                Console.WriteLine("El Salario de"
-                                  + Nombre
-                                  + "Es el siguiente "
-                                  + Restante
-                                  + "Este salario esta: "
-                                  + Proces);
+                Console.WriteLine("El Salario de" + " " 
+                                  + Nombre + " "
+                                  + "Es el siguiente " + " "
+                                  + Restante + " "
+                                  + "Este salario esta: " + " "
+                                  + Simgleton.Proceso.Procesar(""));
 
             }
             else 
             {
 
-                double[] APagar = { };
+                double[] APagar = new double[Pagos.TiposP.Servicio.Length];
                 for (int i = 0; i < Pagos.TiposP.Servicio.Length; i++)
                 {
                     Console.WriteLine(Pagos.TiposP.Servicio[i]);
                     
                     APagar[i] = Convert.ToDouble(Console.ReadLine());
                 }
-                var Total = APagar.Sum();
-                Console.WriteLine("Total de servicio a pagar: " + Total);
-
-
+                Total = APagar.Sum();
+                Console.WriteLine("Total de servicio a pagar: " +" "+ Total +" "+ "Esta operacion fue:" +" "+ Simgleton.Proceso.Procesar(""));
             }
-
-
-            
-
-
-
+            Console.WriteLine("Presiona un boton para continuar...");
+            Console.ReadKey();
         }
     }
 }

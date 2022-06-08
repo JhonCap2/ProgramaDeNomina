@@ -22,9 +22,23 @@ namespace ProgramaDeNomina.Clases
         }
         public string Procesar(string mensaje) 
         {
-            for (int i = 0; i < Pagos.TiposP.PagoARealizar.Length; i++)
+            if (Program.tpp == Pagos.TiposP.TipoPago[1])
             {
-                if (Pagos.TiposP.PagoARealizar[i] == Program.Restante)
+                if (Program.Total > 0)
+                {
+                    mensaje = "Procesado correctamente";
+                }
+                else 
+                {
+                    mensaje = "No logro ser procesado";
+                }
+                
+            }
+            else
+            {
+                for (int i = 0; i < Pagos.TiposP.PagoARealizar.Length; i++)
+            {
+                if (Program.Restante >= Pagos.TiposP.PagoARealizar[i])
                 {
                     mensaje = "Procesado correctamente";
                     
@@ -34,7 +48,9 @@ namespace ProgramaDeNomina.Clases
                     mensaje = "No logro ser procesado";
                 }
             }
+            }
             return mensaje;
+            
         }
     }
 }
